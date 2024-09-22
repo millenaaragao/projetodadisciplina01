@@ -1,0 +1,25 @@
+import cv2
+import numpy as np
+
+# Carregar a imagem
+img = cv2.imread('mama_contornos.jpg')
+
+# Contar o número de pixels brancos (255) e pretos (0)
+numero_pixels_brancos = np.sum(img == 255)
+numero_pixels_pretos = np.sum(img == 0)
+
+# Exibir o número de pixels brancos e pretos
+print('Número de pixels brancos:', numero_pixels_brancos)
+print('Número de pixels pretos:', numero_pixels_pretos)
+
+# Calcular o percentual de pixels brancos
+percentual_pixels_brancos = (numero_pixels_brancos / (numero_pixels_brancos + numero_pixels_pretos)) * 100
+
+# Exibir o percentual de pixels brancos
+print('Porcentagem de pixels brancos:', percentual_pixels_brancos)
+
+# Condição para verificar se a imagem tem câncer com base na porcentagem de pixels brancos
+if percentual_pixels_brancos >= 30:
+    print('Imagem com câncer')
+else:
+    print('Imagem sem câncer')
